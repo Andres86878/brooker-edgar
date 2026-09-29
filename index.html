@@ -38,7 +38,7 @@
   --ease:cubic-bezier(.2,.8,.2,1);
 }
 *{box-sizing:border-box}
-html{scroll-behavior:smooth;background:var(--abyss)}
+html{background:var(--abyss)}
 body{margin:0;background:var(--abyss);color:var(--cream);font-family:var(--f-body);font-size:16px;line-height:1.55;-webkit-font-smoothing:antialiased;overflow-x:hidden}
 img,video{max-width:100%;display:block}
 a{color:inherit}
@@ -78,6 +78,14 @@ main,footer{position:relative;z-index:2;overflow-x:clip}
 .nav-links{display:flex;gap:26px;margin-left:auto}
 .nav-links a{text-decoration:none;font-size:.92rem;color:var(--muted);transition:color .2s}
 .nav-links a:hover{color:var(--cream)}
+.nav-drop{position:relative}
+.nav-drop-trigger{display:flex;align-items:center;gap:5px}
+.nav-drop-trigger::after{content:"";width:6px;height:6px;border:1px solid currentColor;border-top:0;border-left:0;transform:rotate(45deg) translateY(-2px);opacity:.7}
+.nav-drop-panel{position:absolute;top:calc(100% + 12px);left:-14px;min-width:216px;display:flex;flex-direction:column;gap:2px;padding:8px;border-radius:14px;background:var(--panel-solid);border:1px solid var(--line-strong);box-shadow:0 30px 60px -20px rgba(0,0,0,.8);opacity:0;visibility:hidden;transform:translateY(-6px);transition:opacity .18s,transform .18s,visibility .18s}
+.nav-drop:hover .nav-drop-panel,.nav-drop:focus-within .nav-drop-panel{opacity:1;visibility:visible;transform:none}
+.nav-drop-panel a{display:flex!important;align-items:center;gap:10px;padding:9px 10px!important;border:0!important;border-radius:9px;font-size:.86rem!important}
+.nav-drop-panel a:hover{background:rgba(243,232,207,.07)}
+.nav-drop-panel i{font-family:var(--f-mono);font-style:normal;font-size:.68rem;color:var(--orange-hi);letter-spacing:.05em}
 .nav-cta{display:flex;gap:10px;align-items:center;margin-left:auto}
 .nav-links{margin-left:auto}
 .nav-links + .nav-cta{margin-left:0}
@@ -137,13 +145,13 @@ section{position:relative}
 .steps{position:relative}
 .step{min-height:100svh;display:flex;align-items:center;padding:10vh var(--gutter);max-width:1440px;margin-inline:auto;perspective:1200px}
 .step:nth-child(even){justify-content:flex-end}
-.step-card{position:relative;width:min(460px,100%);padding:30px 30px 28px;border-radius:20px;background:var(--panel);border:1px solid var(--line);backdrop-filter:blur(12px) saturate(1.2);-webkit-backdrop-filter:blur(12px) saturate(1.2);box-shadow:0 40px 80px -40px rgba(0,0,0,.8);transform:rotateY(calc(var(--p,0) * var(--dir,1) * 26deg)) translateZ(calc(var(--pa,0) * -140px)) translateY(calc(var(--p,0) * 40px));transition:transform .12s linear}
+.step-card{position:relative;width:min(460px,100%);padding:34px 32px 32px;border-radius:20px;background:var(--panel);border:1px solid var(--line);backdrop-filter:blur(12px) saturate(1.2);-webkit-backdrop-filter:blur(12px) saturate(1.2);box-shadow:0 40px 80px -40px rgba(0,0,0,.8);transform:rotateY(calc(var(--p,0) * var(--dir,1) * 26deg)) translateZ(calc(var(--pa,0) * -140px)) translateY(calc(var(--p,0) * 40px));transition:transform .12s linear}
 .step:nth-child(even) .step-card{--dir:-1}
 .step-n{display:flex;align-items:baseline;gap:14px;font-family:var(--f-mono);font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;color:var(--orange-hi);margin-bottom:14px}
 .step-n b{font-family:var(--f-stencil);font-size:3.2rem;line-height:.8;font-weight:800;color:var(--cream);letter-spacing:0}
 .step-card h3{margin-bottom:12px}
 .step-card p{color:var(--muted)}
-.step-card .chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px}
+.step-card .chips{display:flex;flex-wrap:wrap;gap:10px;margin-top:22px}
 .chip{display:inline-flex;align-items:center;gap:6px;padding:6px 11px;border-radius:999px;border:1px solid var(--line-strong);font-size:.78rem;color:var(--cream);background:rgba(243,232,207,.04)}
 .chip.o{border-color:rgba(231,98,44,.6);color:var(--orange-hi)}
 .chip .dot{width:7px;height:7px;border-radius:50%;background:currentColor}
@@ -155,8 +163,8 @@ section{position:relative}
 .chivo{padding:16vh var(--gutter) 12vh;background:linear-gradient(180deg,rgba(3,21,32,0) 0%,rgba(3,21,32,.82) 18%,rgba(3,21,32,.92) 100%)}
 .chivo-grid{max-width:1440px;margin-inline:auto;display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);gap:clamp(24px,5vw,80px);align-items:center}
 .chivo-copy h2 .o{color:var(--orange)}
-.quotes{list-style:none;padding:0;margin:34px 0 0;display:grid;gap:0;border-top:1px solid var(--line)}
-.quotes li{display:grid;grid-template-columns:120px 1fr;gap:18px;padding:16px 0;border-bottom:1px solid var(--line);align-items:baseline}
+.quotes{list-style:none;padding:0;margin:40px 0 0;display:grid;gap:0;border-top:1px solid var(--line)}
+.quotes li{display:grid;grid-template-columns:120px 1fr;gap:18px;padding:22px 0;border-bottom:1px solid var(--line);align-items:baseline}
 .quotes small{font-family:var(--f-mono);font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;color:var(--dim)}
 .quotes span{font-family:var(--f-display);font-size:clamp(1.3rem,2vw,1.7rem);text-transform:uppercase;font-weight:700;line-height:1.05}
 .phone-wrap{perspective:1600px;display:grid;place-items:center}
@@ -237,6 +245,12 @@ section{position:relative}
 
 footer{padding:40px var(--gutter) calc(40px + env(safe-area-inset-bottom,0px));background:var(--abyss);border-top:1px solid var(--line)}
 .foot{max-width:1440px;margin-inline:auto;display:flex;justify-content:space-between;align-items:center;gap:24px;flex-wrap:wrap}
+.credit{max-width:1440px;margin:22px auto 0;padding-top:18px;border-top:1px solid var(--line);text-align:center}
+.credit-line{width:130px;height:2px;margin:0 auto 14px;border:0;border-radius:2px;background:linear-gradient(90deg,#00E5FF,#7B4DFF 50%,#FF2E88);opacity:.9}
+.credit .credit-brand{display:inline-flex;align-items:center;text-decoration:none;opacity:.9;transition:opacity .25s,filter .25s,transform .25s}
+.credit .credit-brand:hover{opacity:1;filter:drop-shadow(0 0 10px rgba(123,77,255,.55));transform:translateY(-1px)}
+.credit-logo{height:18px;width:auto;display:block}
+.credit-label{font-family:var(--f-body);font-size:.66rem;font-weight:500;letter-spacing:.32em;text-transform:uppercase;color:var(--muted);margin:0 0 12px}
 .foot img{height:64px;width:auto}
 .foot p{color:var(--dim);font-size:.82rem;max-width:60ch}
 .foot .admin-link{background:none;border:0;color:var(--dim);font-size:.8rem;text-decoration:underline;cursor:pointer;padding:6px}
@@ -375,9 +389,12 @@ td input,td select{min-height:36px;padding:6px 8px;border-radius:8px;border:1px 
   .dash-grid{grid-template-columns:1fr}
 }
 @media (max-width:900px){
-  .nav-links{position:fixed;top:0;left:0;right:0;flex-direction:column;gap:0;padding:calc(76px + env(safe-area-inset-top,0px)) var(--gutter) 20px;background:rgba(3,21,32,.97);border-bottom:1px solid var(--line);transform:translateY(-105%);transition:transform .4s var(--ease);z-index:-1}
+  .nav-links{position:fixed;top:0;left:0;right:0;flex-direction:column;gap:0;padding:calc(76px + env(safe-area-inset-top,0px)) var(--gutter) 20px;background:var(--abyss);border-bottom:1px solid var(--line);transform:translateY(-105%);transition:transform .4s var(--ease);z-index:-1}
   .nav-links.open{transform:none}
   .nav-links a{padding:16px 0;border-bottom:1px solid var(--line);font-size:1.1rem;color:var(--cream)}
+  .nav-drop-panel{position:static;opacity:1;visibility:visible;transform:none;min-width:0;padding:0 0 4px 14px;border:0;background:none;box-shadow:none;gap:0}
+  .nav-drop-panel a{padding:12px 0!important;font-size:1rem!important;border-bottom:1px dashed var(--line)!important}
+  .nav-drop-trigger::after{display:none}
   .burger{display:flex}
   .nav-cta .ghost{display:none}
   .hero{grid-template-columns:1fr;padding-top:100px;gap:0;min-height:auto}
@@ -389,7 +406,7 @@ td input,td select{min-height:36px;padding:6px 8px;border-radius:8px;border:1px 
   .side{position:static}
   .portrait .ptxt{max-width:62%}
   .step{min-height:92svh;justify-content:center!important}
-  .quotes li{grid-template-columns:1fr;gap:4px}
+  .quotes li{grid-template-columns:1fr;gap:8px}
 }
 @media (max-width:640px){
   .brand img{height:30px}
@@ -523,13 +540,13 @@ td input,td select{min-height:36px;padding:6px 8px;border-radius:8px;border:1px 
 .boss-tag b{font-family:var(--f-display);font-size:1rem;letter-spacing:.06em;color:var(--cream)}
 .boss-tag i{width:8px;height:8px;border-radius:50%;background:var(--ok);box-shadow:0 0 0 3px rgba(98,196,143,.25)}
 .boss-tag::after{content:"";position:absolute;left:50%;top:100%;width:1px;height:26px;background:linear-gradient(var(--orange),transparent)}
-/* shorter page */
-.journey{padding-top:6vh}
-.step{min-height:74svh;padding:5vh var(--gutter)}
-.chivo{padding:9vh var(--gutter) 8vh}
-.services{padding:9vh var(--gutter)}
-.preview{margin-top:60px}
-.contact{padding:9vh var(--gutter) 7vh}
+/* shorter page (pero con más aire: el cliente sintió la página recargada) */
+.journey{padding-top:7vh}
+.step{min-height:78svh;padding:7.5vh var(--gutter)}
+.chivo{padding:12vh var(--gutter) 11vh}
+.services{padding:12vh var(--gutter)}
+.preview{margin-top:76px}
+.contact{padding:11vh var(--gutter) 9vh}
 .portrait{min-height:360px}
 /* containers: more detail + crisp when open */
 .cbox.open .cbox-scene > .cbox-item{transform:none!important}
@@ -560,6 +577,30 @@ td input,td select{min-height:36px;padding:6px 8px;border-radius:8px;border:1px 
 .cb-back,.cb-l,.cb-r,.cb-t,.cb-f,.cb-cargo,.cb-post,.cb-rail{opacity:calc(1 - var(--oc) * .45)}
 .cbox-glow{opacity:calc(var(--od) * (1 - var(--oc)) * 1.6)}
 .cbox-item{box-shadow:0 0 0 1px rgba(243,232,207,.08),0 calc(var(--oc) * 40px) calc(var(--oc) * 70px) -30px rgba(0,0,0,.9)}
+
+/* ---- motivos por paso: cada contenedor abre a su manera ----
+   Los motivos cuelgan del MARCO del contenedor (como los postes/rieles ya
+   existentes con offsets negativos), nunca sobre el texto de la tarjeta. */
+.cb-motif{position:absolute;z-index:5;pointer-events:none;will-change:transform,opacity}
+.cbox--stamp .cb-motif{right:-30px;top:-30px;width:74px;height:74px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1px;border-radius:50%;border:3px solid var(--ink);background:radial-gradient(circle,rgba(0,0,0,.35),var(--dark) 70%);color:var(--ink);opacity:var(--oc);transform:translateZ(96px) rotate(calc(-24deg + var(--oc) * 24deg)) scale(calc(.5 + var(--oc) * .5))}
+.cbox--stamp .cb-motif b{font-size:1.4rem;line-height:1;font-family:var(--f-stencil)}
+.cbox--stamp .cb-motif small{font-family:var(--f-mono);font-size:.4rem;letter-spacing:.06em}
+.cbox--sheet .cb-motif{left:50%;bottom:-38px;width:52%;height:54px;transform:translateX(-50%) translateZ(80px) translateY(calc((1 - var(--oc)) * 46px)) rotate(calc((1 - var(--oc)) * -6deg));opacity:var(--oc);background:linear-gradient(180deg,#fff,#e9e2cf);border:1px solid rgba(0,0,0,.25);box-shadow:0 14px 28px -10px rgba(0,0,0,.55);border-radius:2px;padding:7px 10px;color:#4d3d22}
+.cbox--sheet .cb-motif small{display:block;font-family:var(--f-mono);font-size:.44rem;letter-spacing:.1em}
+.cbox--sheet .cb-motif::after{content:"";position:absolute;left:9px;right:9px;top:21px;border-top:2px dashed rgba(0,0,0,.18);height:0;box-shadow:0 9px 0 -1px rgba(0,0,0,.12),0 18px 0 -1px rgba(0,0,0,.08)}
+.cbox--crane .cb-motif{left:50%;top:-46px;width:3px;height:calc(20px + var(--oc) * 18px);transform:translateX(-50%) translateZ(96px);background:linear-gradient(180deg,var(--ink),transparent);opacity:var(--oc)}
+.cbox--crane .cb-motif::after{content:"";position:absolute;left:50%;bottom:-2px;width:20px;height:20px;transform:translate(-50%,30%) rotate(45deg);border:3px solid var(--ink);border-top:0;border-left:0}
+.cbox--wake .cb-motif{left:8%;right:8%;bottom:6px;height:22%;transform:translateZ(70px);overflow:hidden;opacity:calc(var(--oc) * .8)}
+.cbox--wake .cb-motif i{position:absolute;height:3px;background:var(--ink);opacity:.72;border-radius:2px;box-shadow:0 0 6px 0 rgba(243,232,207,.35);animation:cbWake 2.8s linear infinite;animation-play-state:paused;transform:translateX(-120%)}
+.cbox.open.cbox--wake .cb-motif i{animation-play-state:running}
+.cbox--wake .cb-motif i:nth-child(1){width:28%;bottom:10%;animation-delay:0s}
+.cbox--wake .cb-motif i:nth-child(2){width:20%;bottom:34%;animation-delay:-1s}
+.cbox--wake .cb-motif i:nth-child(3){width:36%;bottom:58%;animation-delay:-1.9s}
+@keyframes cbWake{from{transform:translateX(-120%)}to{transform:translateX(240%)}}
+.cbox--flag .cb-motif{right:-26px;top:-26px;width:42px;height:42px;display:grid;place-items:center;border-radius:50%;background:var(--wall);color:var(--ink);font-family:var(--f-stencil);font-size:1.15rem;box-shadow:0 14px 26px -8px rgba(0,0,0,.6);opacity:var(--oc);transform:translateZ(96px) translateY(calc((1 - var(--oc)) * -26px)) scale(calc(.4 + var(--oc) * .6))}
+@media (prefers-reduced-motion:reduce){ .cbox--wake .cb-motif i{animation:none!important} }
+@media (max-width:640px){ .cbox--stamp .cb-motif{width:52px;height:52px;right:-16px;top:-16px} .cbox--stamp .cb-motif b{font-size:1rem} .cbox--sheet .cb-motif{width:66%;height:44px;bottom:-26px} .cbox--flag .cb-motif{width:32px;height:32px;right:-14px;top:-14px} .cbox--crane .cb-motif{top:-30px} }
+
 /* ---- rendimiento: sin filtros costosos sobre el canvas 3D ---- */
 .grain{display:none}
 .nav.solid{backdrop-filter:none;-webkit-backdrop-filter:none;background:rgba(3,21,32,.94)}
@@ -637,7 +678,16 @@ html.loading .hero-title .ln > span{animation-play-state:paused}
 <header class="nav" id="nav">
   <a class="brand" href="#top" aria-label="CHIVEN Broker, inicio"><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxNjI1IDY4OSI+PHBhdGggZmlsbD0iI0U3NjIyQyIgZmlsbC1ydWxlPSJldmVub2RkIiBkPSJNMTQ3NyA0NTEgTDE0NzcgNDY1IEwxNDc5IDQ2NyBMMTQ5MiA0NjcgTDE0OTUgNDcwIEwxNDk1IDQ4MyBMMTQ3NyA0OTUgTDE0NzggNTEyIEwxNDk3IDUwNCBMMTUwOSA1MTIgTDE1MjMgNTE0IEwxNTMzIDUxMiBMMTU0NCA1MDUgTDE1NDcgNTAwIEwxNTQ3IDQ1MSBMMTU0NSA0NDkgTDE0NzkgNDQ5WiBNMTUxNyA0NjcgTDE1MjUgNDY3IEwxNTI4IDQ3MCBMMTUyOCA0OTEgTDE1MjQgNDk1IEwxNTE5IDQ5NSBMMTUxNCA0OTAgTDE1MTQgNDcwWiBNMTQ3NyAzODYgTDE0NzcgNDM4IEwxNDc5IDQ0MCBMMTQ5MiA0NDAgTDE0OTQgNDM4IEwxNDk0IDQwNSBMMTQ5NyA0MDIgTDE1MDIgNDAyIEwxNTA1IDQwNiBMMTUwNSA0MzggTDE1MDcgNDQwIEwxNTE4IDQ0MCBMMTUyMCA0MzggTDE1MjAgNDA1IEwxNTIzIDQwMiBMMTUzMCA0MDUgTDE1MzAgNDM4IEwxNTMyIDQ0MCBMMTU0NSA0NDAgTDE1NDcgNDM4IEwxNTQ3IDM4NiBMMTU0NSAzODQgTDE0NzkgMzg0WiBNMTQ3NyAzMTIgTDE0NzcgMzI2IEwxNDc5IDMyOCBMMTQ5OCAzMjkgTDE1MDEgMzMyIEwxNTAwIDMzOCBMMTQ3OCAzNTUgTDE0NzggMzc4IEwxNTEyIDM1NSBMMTU0NSAzNzggTDE1NDcgMzc3IEwxNTQ3IDM1NiBMMTUyMyAzMzYgTDE1MjYgMzI5IEwxNTQ0IDMyOSBMMTU0NyAzMjcgTDE1NDcgMzEyIEwxNTQ1IDMxMCBMMTQ3OSAzMTBaIE0xNDgxIDI1MCBMMTQ3NiAyNjIgTDE0NzUgMjc1IEwxNDc3IDI4NiBMMTQ4NiAyOTkgTDE0OTggMzA0IEwxNTIyIDMwNSBMMTUzNyAzMDAgTDE1NDQgMjkzIEwxNTQ5IDI4MCBMMTU0OSAyNjUgTDE1NDYgMjU0IEwxNTQwIDI0NiBMMTUyOCAyNDAgTDE1MDIgMjM5IEwxNDg5IDI0M1ogTTE1MDMgMjU5IEwxNTE3IDI1NyBMMTUyNiAyNjMgTDE1MjcgMjc4IEwxNTIyIDI4NSBMMTUwOCAyODcgTDE0OTkgMjgxIEwxNDk3IDI2OFogTTE0NzcgMTcxIEwxNDc3IDE4NSBMMTQ3OSAxODcgTDE0OTEgMTg3IEwxNDk0IDE5MCBMMTQ5NCAyMDQgTDE0NzcgMjE1IEwxNDc4IDIzMiBMMTQ5NiAyMjQgTDE1MDkgMjMyIEwxNTI1IDIzNCBMMTUzMyAyMzIgTDE1NDQgMjI1IEwxNTQ3IDIxOSBMMTU0NyAxNzEgTDE1NDUgMTY5IEwxNDc5IDE2OVogTTE1MTcgMTg3IEwxNTI0IDE4NyBMMTUyNyAxOTAgTDE1MjggMjA4IEwxNTIzIDIxNSBMMTUxOCAyMTUgTDE1MTQgMjExIEwxNTE0IDE5MFogTTE0NzcgMTAxIEwxNDc3IDE1MiBMMTQ4NCAxNjEgTDE1MDMgMTYzIEwxNTEzIDE1NiBMMTUyNCAxNjAgTDE1MzMgMTYwIEwxNTQ1IDE1MyBMMTU0NyAxNDkgTDE1NDcgMTAxIEwxNTQ1IDk5IEwxNDc5IDk5WiBNMTUyNCAxMTcgTDE1MzEgMTIwIEwxNTMxIDEzOSBMMTUyNyAxNDMgTDE1MjEgMTM5IEwxNTIxIDEyMFogTTE0OTYgMTE3IEwxNTAwIDExNyBMMTUwNCAxMjEgTDE1MDQgMTQxIEwxNTAwIDE0NiBMMTQ5MyAxNDMgTDE0OTMgMTIwWiBNMTU2MiA5OCBMMTU2MCAxMDAgTDE1NjAgNTEzIEwxNTY2IDUxNSBMMTU2OCA1MTMgTDE1NjggMTAwWiIvPjxwYXRoIGZpbGw9IiNGM0U4Q0YiIGZpbGwtcnVsZT0iZXZlbm9kZCIgZD0iTTE1OTEgMTEwIEwxNTg5IDExMiBMMTU4OSAxMjQgTDE1OTEgMTI2IEwxNTk2IDEyMSBMMTYwMiAxMjYgTDE2MDEgMTE4IEwxNjAzIDExMyBMMTYwMCAxMTBaIE0xNTkxIDk5IEwxNTc5IDEwOCBMMTU3NiAxMTcgTDE1NzcgMTI0IEwxNTg0IDEzNCBMMTU5MCAxMzcgTDE2MDEgMTM3IEwxNjEyIDEyOSBMMTYxNSAxMjMgTDE2MTUgMTE0IEwxNjA3IDEwMiBMMTYwMSA5OVogTTE1OTEgMTAzIEwxNjA0IDEwNSBMMTYxMSAxMTQgTDE2MTAgMTI1IEwxNjA1IDEzMSBMMTU5OCAxMzQgTDE1ODggMTMyIEwxNTgwIDEyMSBMMTU4MyAxMDlaIE0xMTcyIDk4IEwxMTcwIDEwMCBMMTE3MCA1MTMgTDExNzIgNTE1IEwxMjY0IDUxNSBMMTI2NiA1MTMgTDEyNjYgMzA4IEwxMjY5IDMwNyBMMTI3OSA1MTMgTDEyODEgNTE1IEwxNDUwIDUxNSBMMTQ1MiA1MTMgTDE0NTIgMTAwIEwxNDUwIDk4IEwxMzMyIDk4IEwxMzMwIDEwMCBMMTMzMCAzMTcgTDEzMjcgMzE4IEwxMzI1IDMxMyBMMTMxNyAxMDAgTDEzMTUgOThaIE05ODggOTggTDk4NiAxMDAgTDk4NiA1MTMgTDk4OCA1MTUgTDExNDcgNTE1IEwxMTQ5IDUxMyBMMTE0OSA0MTggTDExNDcgNDE2IEwxMTEwIDQxNiBMMTEwNyA0MTMgTDExMDcgMzU4IEwxMTEwIDM1NSBMMTEzNSAzNTUgTDExMzcgMzUzIEwxMTM3IDI1OSBMMTEzNSAyNTcgTDExMTAgMjU3IEwxMTA3IDI1NCBMMTEwNyAxOTkgTDExMTAgMTk2IEwxMTQ3IDE5NiBMMTE0OSAxOTQgTDExNDkgMTAwIEwxMTQ3IDk4WiBNNTY1IDk4IEw1NjMgMTAwIEw1NjMgNTEzIEw1NjUgNTE1IEw2ODIgNTE1IEw2ODQgNTEzIEw2ODQgMTAwIEw2ODIgOThaIE0yODggOTggTDI4NiAxMDAgTDI4NiA1MTMgTDI4OCA1MTUgTDQwNSA1MTUgTDQwNyA1MTMgTDQwNyAzNTggTDQxMCAzNTUgTDQxNyAzNTUgTDQyMCAzNTggTDQyMCA1MTMgTDQyMiA1MTUgTDU0MCA1MTUgTDU0MiA1MTMgTDU0MiAxMDAgTDU0MCA5OCBMNDIyIDk4IEw0MjAgMTAwIEw0MjAgMjU0IEw0MTcgMjU3IEw0MTAgMjU3IEw0MDcgMjU0IEw0MDcgMTAwIEw0MDUgOThaIE01OSAxMDYgTDQxIDExNiBMMjYgMTMyIEwxNSAxNTcgTDExIDE4MCBMMTAgNDE4IEwxMyA0NDYgTDE5IDQ2NyBMMzEgNDg3IEw0MiA0OTcgTDU5IDUwNiBMNzYgNTExIEwxMDAgNTE0IEwxNTUgNTE1IEwxODkgNTEzIEwyMTUgNTA3IEwyMzcgNDk1IEwyNDcgNDg1IEwyNjAgNDYwIEwyNjYgNDI3IEwyNjYgMzEzIEwyNjQgMzExIEwxNDYgMzExIEwxNDQgMzEzIEwxNDQgNDEzIEwxNDEgNDE2IEwxMzUgNDE2IEwxMzEgNDEyIEwxMzEgMjAwIEwxMzUgMTk2IEwxNDEgMTk2IEwxNDQgMTk5IEwxNDQgMjk5IEwxNDYgMzAxIEwyNjQgMzAxIEwyNjYgMjk5IEwyNjYgMTg0IEwyNTggMTQ3IEwyNDkgMTMwIEwyMzggMTE4IEwyMjAgMTA3IEwyMDQgMTAyIEwxNzIgOTggTDEwNSA5OCBMNzcgMTAxWiBNOTU0IDEwIEw4NjQgMTQgTDg1NyAzMSBMODM5IDk1IEw4MzkgNDE1IEw4MzYgNDE4IEw4MjkgNDE4IEw4MjYgNDE1IEw4MjYgOTYgTDgwMyAxNiBMNzkzIDEzIEw3MTAgMTAgTDYyMSA3MiBMNjIxIDc0IEw2NzQgNzEgTDcwNSA5OSBMNzY0IDYxNyBMODIzIDY3OCBMODI1IDY3NyBMODI2IDYwMSBMOTE0IDUxNCBMOTYwIDk5IEw5OTEgNzEgTDEwNDQgNzNaIi8+PC9zdmc+" alt="CHIVEN Broker" width="90" height="38"></a>
   <nav class="nav-links" id="navLinks" aria-label="Principal">
-    <a href="#recorrido">Cómo funciona</a>
+    <div class="nav-drop">
+      <a href="#recorrido" class="nav-drop-trigger">Cómo funciona</a>
+      <div class="nav-drop-panel">
+        <a href="#paso1"><i>01</i>Casillero</a>
+        <a href="#paso2"><i>02</i>Planilla</a>
+        <a href="#paso3"><i>03</i>Embarque</a>
+        <a href="#paso4"><i>04</i>Tránsito</a>
+        <a href="#paso5"><i>05</i>Llegada</a>
+      </div>
+    </div>
     <a href="#chivo">El Chivo</a>
     <a href="#servicios">Servicios</a>
     <a href="#contacto">Contacto</a>
@@ -689,40 +739,40 @@ html.loading .hero-title .ln > span{animation-play-state:paused}
       <p class="lead">Cinco pasos. Mientras bajas, sigue el contenedor en el puerto: así se mueve tu carga con CHIVEN BROKER.</p>
     </div>
     <div class="steps">
-      <article class="step" data-cam="casillero" data-chivo="Paso 1: tu casillero. Tu código es tu nombre dentro del contenedor.">
-        <div class="step-card" data-cbox="orange" data-code="CHVU 977 013 1">
+      <article class="step" id="paso1" data-cam="casillero" data-chivo="Paso 1: tu casillero. Tu código es tu nombre dentro del contenedor.">
+        <div class="step-card" data-cbox="orange" data-code="CHVU 977 013 1" data-motif="stamp">
           <div class="step-n"><b>1</b>Casillero</div>
           <h3>Crea tu casillero</h3>
           <p>Te registras en minutos y el sistema te asigna tu código único. Con él identificamos cada caja tuya, entre cientos, dentro del contenedor.</p>
           <div class="chips"><span class="chip o mono">NCE JM-977-XX</span><span class="chip">Código automático</span></div>
         </div>
       </article>
-      <article class="step" data-cam="almacen" data-chivo="Paso 2: tu proveedor envía la mercancía a nuestro almacén en China con tu planilla.">
-        <div class="step-card" data-cbox="navy" data-code="CHVU 977 014 2">
+      <article class="step" id="paso2" data-cam="almacen" data-chivo="Paso 2: tu proveedor envía la mercancía a nuestro almacén en China con tu planilla.">
+        <div class="step-card" data-cbox="navy" data-code="CHVU 977 014 2" data-motif="sheet">
           <div class="step-n"><b>2</b>Planilla PDF</div>
           <h3>Tu proveedor envía a nuestro almacén</h3>
           <p>Descargas tu planilla en PDF con tu código ya colocado y se la envías a tu proveedor. Él marca las cajas y las entrega en el almacén de CHIVEN en China.</p>
           <div class="chips"><span class="chip">Planilla con tu código</span><span class="chip">Marca de envío</span></div>
         </div>
       </article>
-      <article class="step" data-cam="embarque" data-chivo="Paso 3: consolidamos y embarcamos. Sí, esa grúa es la de tu carga.">
-        <div class="step-card" data-cbox="cream" data-code="CHVU 977 015 3">
+      <article class="step" id="paso3" data-cam="embarque" data-chivo="Paso 3: consolidamos y embarcamos. Sí, esa grúa es la de tu carga.">
+        <div class="step-card" data-cbox="cream" data-code="CHVU 977 015 3" data-motif="crane">
           <div class="step-n"><b>3</b>Consolidación</div>
           <h3>Consolidamos y embarcamos</h3>
           <p>Recibimos el Packing List desde China, lo revisamos y asociamos a tu código el CBM, el peso, la cantidad de cajas y el BL de tu carga.</p>
           <div class="chips"><span class="chip">CBM</span><span class="chip">Peso</span><span class="chip">Cajas</span><span class="chip">BL</span></div>
         </div>
       </article>
-      <article class="step" data-cam="transito" data-chivo="Paso 4: en tránsito. Yo vigilo el barco, tú revisa “Mi carga”.">
-        <div class="step-card" data-cbox="steel" data-code="CHVU 977 016 4">
+      <article class="step" id="paso4" data-cam="transito" data-chivo="Paso 4: en tránsito. Yo vigilo el barco, tú revisa “Mi carga”.">
+        <div class="step-card" data-cbox="steel" data-code="CHVU 977 016 4" data-motif="wake">
           <div class="step-n"><b>4</b>En tránsito</div>
           <h3>Sigue tu carga en “Mi carga”</h3>
           <p>Entras con tu código y tu clave y ves solo tu información: estado, BL y llegada estimada. Nadie más ve tus datos, y tú no ves los de nadie.</p>
           <div class="chips"><span class="chip o"><span class="dot"></span>En tránsito</span><span class="chip">Acceso privado</span></div>
         </div>
       </article>
-      <article class="step" data-cam="llegada" data-chivo="Paso 5: llegada. La fecha es estimada, pero el camino lo conozco.">
-        <div class="step-card" data-cbox="orange" data-code="CHVU 977 017 5">
+      <article class="step" id="paso5" data-cam="llegada" data-chivo="Paso 5: llegada. La fecha es estimada, pero el camino lo conozco.">
+        <div class="step-card" data-cbox="orange" data-code="CHVU 977 017 5" data-motif="flag">
           <div class="step-n"><b>5</b>Llegada</div>
           <h3>Llega a puerto</h3>
           <p>Actualizamos el estado hasta que tu carga está lista para entrega. La fecha de llegada se muestra siempre como estimación, no como garantía.</p>
@@ -848,6 +898,20 @@ html.loading .hero-title .ln > span{animation-play-state:paused}
     <p>© <span id="yr">2026</span> CHIVEN BROKER. Las fechas de llegada son estimadas y no constituyen garantía de entrega. Tus datos personales solo se usan para gestionar tu casillero y tu carga.</p>
     <button class="admin-link" type="button" data-open="admin">Acceso equipo CHIVEN</button>
   </div>
+  <div class="credit">
+    <hr class="credit-line" aria-hidden="true">
+    <p class="credit-label">Diseño y desarrollo</p>
+    <a class="credit-brand" href="https://kromatikweb.com" target="_blank" rel="noopener" aria-label="Kromatik — diseño y desarrollo web"><svg class="credit-logo" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 -25 940.0 150"><g transform="translate(0,-25) scale(1.5) translate(-14,-10)"><defs>
+  <linearGradient id="kmxStem" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0" stop-color="#00E5FF"/><stop offset="1" stop-color="#7B4DFF"/></linearGradient>
+  <linearGradient id="kmxUp" x1="0" y1="1" x2="1" y2="0">
+    <stop offset="0" stop-color="#7B4DFF"/><stop offset="1" stop-color="#FF2E88"/></linearGradient>
+  <linearGradient id="kmxLow" x1="0" y1="0" x2="1" y2="1">
+    <stop offset="0" stop-color="#3B1FA8"/><stop offset="1" stop-color="#7B4DFF"/></linearGradient>
+  <linearGradient id="kmxFacet" x1="0" y1="0" x2="1" y2="1">
+    <stop offset="0" stop-color="#fff" stop-opacity=".38"/><stop offset=".55" stop-color="#fff" stop-opacity="0"/></linearGradient>
+</defs><polygon points="49.80,66.20 67.20,48.80 108.00,110.00 76.50,110.00" fill="url(#kmxLow)"/><polygon points="14.00,10.00 38.00,10.00 38.00,110.00 14.00,110.00" fill="url(#kmxStem)"/><polygon points="43.00,44.00 77.00,10.00 106.00,10.00 43.00,73.00" fill="url(#kmxUp)"/><polygon points="14.00,10.00 38.00,10.00 14.00,110.00" fill="#fff" opacity=".12"/><polygon points="43.00,44.00 77.00,10.00 106.00,10.00" fill="#fff" opacity=".14"/><polygon points="49.80,66.20 67.20,48.80 76.50,110.00" fill="#000" opacity=".22"/></g><g transform="translate(203.0,0)"><defs><clipPath id="kmxCap"><rect x="-10" y="0" width="757" height="100"/></clipPath><linearGradient id="kmxO" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#00E5FF"/><stop offset=".5" stop-color="#7B4DFF"/><stop offset="1" stop-color="#FF2E88"/></linearGradient></defs><g transform="translate(0,0)" clip-path="url(#kmxCap)"><path transform="translate(0,0)" d="M7.5,-20 V120 M11.5,70 L77.5,-20 M33.5,43 L69.5,120" fill="none" stroke="#FFFFFF" stroke-width="15" stroke-linejoin="miter" stroke-miterlimit="10"/><path transform="translate(90,0)" d="M7.5,120 V7.5 H38 A25.5 25.5 0 0 1 38 58.5 H7.5 M34,58.5 L66,120" fill="none" stroke="#FFFFFF" stroke-width="15" stroke-linejoin="miter" stroke-miterlimit="10"/><path transform="translate(182,0)" d="M50,7.5 A42.5 42.5 0 1 1 49.99,7.5 Z" fill="none" stroke="#FFFFFF" stroke-width="15" stroke-linejoin="miter" stroke-miterlimit="10"/><path transform="translate(308,0)" d="M7.5,120 V9.5 L47,76 L86.5,9.5 V120" fill="none" stroke="#FFFFFF" stroke-width="15" stroke-linejoin="miter" stroke-miterlimit="10"/><path transform="translate(428,0)" d="M0,122 L41,2 L82,122" fill="none" stroke="#FFFFFF" stroke-width="15" stroke-linejoin="miter" stroke-miterlimit="10"/><path transform="translate(536,0)" d="M-4,7.5 H74 M35,7.5 V120" fill="none" stroke="#FFFFFF" stroke-width="15" stroke-linejoin="miter" stroke-miterlimit="10"/><path transform="translate(632,0)" d="M7.5,-20 V120" fill="none" stroke="#FFFFFF" stroke-width="15" stroke-linejoin="miter" stroke-miterlimit="10"/><path transform="translate(673,0)" d="M7.5,-20 V120 M11.5,70 L77.5,-20 M33.5,43 L69.5,120" fill="none" stroke="#FFFFFF" stroke-width="15" stroke-linejoin="miter" stroke-miterlimit="10"/></g></g></svg></a>
+  </div>
 </footer>
 
 <!-- Tracking HUD -->
@@ -913,7 +977,7 @@ function init(){
 const T = THREE;
 const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
 const mobile = Math.min(innerWidth, innerHeight) < 700 || /Android|iPhone|iPad/i.test(navigator.userAgent);
-const renderer = new T.WebGLRenderer({ canvas, antialias:true, powerPreference:'high-performance' });
+const renderer = new T.WebGLRenderer({ canvas, antialias:!mobile, powerPreference:'high-performance' });
 let PR=Math.min(devicePixelRatio||1, mobile?1:1.25); renderer.setPixelRatio(PR);
 renderer.outputEncoding = T.sRGBEncoding;
 renderer.toneMapping = T.ACESFilmicToneMapping;
@@ -1492,13 +1556,19 @@ const ss=t=>t*t*(3-2*t);
 const st={ pos:V3(0,0,0), look:V3(0,0,0), ship:0, crane:0, stage:'hero' };
 const tS=V3(0,0,0), A1=V3(0,0,0), A2=V3(0,0,0), B1=V3(0,0,0), B2=V3(0,0,0);
 function res(k,s,p,l){ if(k.follow){ shipPos(s,tS); p.copy(tS).add(k.pos); l.copy(tS).add(k.look); } else { p.copy(k.pos); l.copy(k.look); } }
+/* Boundaries that get the same big "flyover" swoop as the follow-mode changes
+   (hero→casillero, almacen→embarque, llegada→chivo): these felt like plain
+   cuts before, so they now share the exact swoop language already used and
+   loved at the ship-following transitions, just at a slightly smaller scale. */
+const ARC_BOOST={ 'hero>casillero':44, 'almacen>embarque':44, 'llegada>chivo':44 };
+function arcFor(a,b){ if(a.k.follow!==b.k.follow) return 70; return ARC_BOOST[a.name+'>'+b.name] || 10; }
 function sample(y){ if(!anchors.length) return; let a=anchors[0], b=a, t=0;
   if(y>=anchors[anchors.length-1].y){ a=b=anchors[anchors.length-1]; }
   else if(y>anchors[0].y) for(let i=0;i<anchors.length-1;i++){ if(y>=anchors[i].y && y<anchors[i+1].y){ a=anchors[i]; b=anchors[i+1]; t=(y-a.y)/Math.max(1,b.y-a.y); break; } }
   const e=ss(t); st.stage = t<.5? a.name : b.name;
   st.ship=a.k.ship+(b.k.ship-a.k.ship)*e; st.crane=a.k.crane+(b.k.crane-a.k.crane)*ss(Math.min(1,t*1.15));
   res(a.k,st.ship,A1,A2); res(b.k,st.ship,B1,B2); st.pos.copy(A1).lerp(B1,e); st.look.copy(A2).lerp(B2,e);
-  st.pos.y += Math.sin(Math.PI*t)*(a.k.follow!==b.k.follow?70:10);
+  st.pos.y += Math.sin(Math.PI*t)*arcFor(a,b);
 }
 
 /* ---------- CRANE ---------- */
@@ -1526,7 +1596,12 @@ let sy=scrollY, mx=0,my=0,tmx=0,tmy=0;
 addEventListener('pointermove',e=>{ tmx=e.clientX/W*2-1; tmy=e.clientY/H*2-1; },{passive:true});
 const clock=new T.Clock(); const cp=V3(0,0,0), cl=V3(0,0,0), sp=V3(0,0,0), lastSp=V3(0,0,0); let first=true;
 const proj=V3(0,0,0);
-let fN=0, slowT=0, fastT=0, skip=false; let intro=reduce?1:0; const IP=V3(170,110,250), IL=V3(-30,8,10); const lastShadowPos=V3(1e9,0,0); let lastCrane=-1;
+let fN=0, slowT=0, fastT=0, skip=false, mobSkip=false; let intro=reduce?1:0; const IP=V3(170,110,250), IL=V3(-30,8,10); const lastShadowPos=V3(1e9,0,0); let lastCrane=-1;
+/* En móvil el GPU suele ser el cuello de botella real (no el CPU/scroll-JS):
+   se renderiza a mitad de tasa (se actualiza cámara/estado cada frame para que
+   el scroll siga fluido, pero solo se dibuja 1 de cada 2 frames), lo que corta
+   a la mitad el trabajo de GPU por segundo — la causa más común y medible de
+   "lag" en teléfonos con escenas 3D en tiempo real. */
 function frame(){
   requestAnimationFrame(frame);
   if(api.paused || document.hidden) return;
@@ -1535,10 +1610,11 @@ function frame(){
   if(covered){ skip=!skip; if(skip) return; }
   const rawDt=clock.getDelta(); const dt=Math.min(rawDt,.05), t=clock.elapsedTime;
   // calidad adaptativa: si va lento baja la resolución, si va sobrado la sube
+  const prFloor = mobile ? .55 : .75, prCeil = Math.min(devicePixelRatio||1, mobile?1:1.25), slowGate = mobile ? .6 : 1.2;
   if(!covered){ if(rawDt>.028){ slowT+=rawDt; fastT=0; } else if(rawDt<.018){ fastT+=rawDt; slowT=0; }
-    if(slowT>1.2 && PR>.75){ PR=Math.max(.75,PR-.2); renderer.setPixelRatio(PR); resize(); slowT=0; }
-    else if(slowT>2 && renderer.shadowMap.enabled){ renderer.shadowMap.enabled=false; sunLight.castShadow=false; scene.traverse(o=>{ if(o.material) (Array.isArray(o.material)?o.material:[o.material]).forEach(m=>m.needsUpdate=true); }); slowT=0; }
-    if(fastT>4 && PR<Math.min(devicePixelRatio||1,1.25)){ PR=Math.min(Math.min(devicePixelRatio||1,1.25),PR+.1); renderer.setPixelRatio(PR); resize(); fastT=0; } }
+    if(slowT>slowGate && PR>prFloor){ PR=Math.max(prFloor,PR-.2); renderer.setPixelRatio(PR); resize(); slowT=0; }
+    else if(slowT>slowGate*1.6 && renderer.shadowMap.enabled){ renderer.shadowMap.enabled=false; sunLight.castShadow=false; scene.traverse(o=>{ if(o.material) (Array.isArray(o.material)?o.material:[o.material]).forEach(m=>m.needsUpdate=true); }); slowT=0; }
+    if(fastT>4 && PR<prCeil){ PR=Math.min(prCeil,PR+.1); renderer.setPixelRatio(PR); resize(); fastT=0; } }
   if(lastShadowPos.distanceToSquared(cl)>4 || Math.abs(lastCrane-st.crane)>.01 || fN%90===0){ renderer.shadowMap.needsUpdate=true; lastShadowPos.copy(cl); lastCrane=st.crane; }
   sy += (scrollY-sy)*(reduce?1:Math.min(1,dt*4));
   sample(sy);
@@ -1566,6 +1642,7 @@ function frame(){
   boss.anchor.getWorldPosition(proj); proj.y+=1.05; proj.project(camera); S.boss={ on: proj.z<1 && Math.abs(proj.x)<.95 && Math.abs(proj.y)<.95, x:(proj.x*.5+.5)*W, y:(-proj.y*.5+.5)*H };
   heroC.getWorldPosition(proj); proj.y+=2.2; proj.project(camera);
   api.target.on = proj.z<1 && Math.abs(proj.x)<.95 && Math.abs(proj.y)<.95; api.target.x=(proj.x*.5+.5)*W; api.target.y=(-proj.y*.5+.5)*H;
+  if(mobile && !covered){ mobSkip=!mobSkip; if(mobSkip) return; }
   if(composer){ finalPass.uniforms.uTime.value=t; composer.render(); } else renderer.render(scene,camera);
 }
 // rebuild canvas textures once webfonts are ready
@@ -1788,6 +1865,20 @@ $$('[data-chivo]').forEach(el=>{ if(!el.classList.contains('hero')) sayIO.observ
    ========================================================= */
 const nav=$('#nav');
 const depthEls = $$('[data-depth]');
+/* rAF-driven smooth scroll: on this heavy, very tall page the browser's native
+   `scroll-behavior:smooth` / scrollIntoView({behavior:'smooth'}) can paint blank
+   frames mid-animation (compositor falls behind on long jumps). Stepping the
+   scroll position ourselves each frame avoids that failure mode entirely. */
+function smoothScrollTo(targetY, ms){
+  const startY=scrollY, dist=targetY-startY;
+  if (reduce || Math.abs(dist)<2){ scrollTo(0, targetY); return; }
+  /* This page is tall and paint-heavy (backdrop-filter blur, 3D perspective,
+     fixed layers). A step-by-step or native-smooth animated scroll across a
+     large distance can outrun the compositor on lower-power phones and paint
+     a blank frame mid-animation. Rather than risk that, jump straight there
+     and let CSS transitions on the revealed content do the "settling" motion. */
+  scrollTo(0, targetY);
+}
 function onScroll(){
   nav.classList.toggle('solid', scrollY>40);
   const vh=innerHeight;
@@ -1797,18 +1888,28 @@ function onScroll(){
     el.style.setProperty('--p', reduce?0:p.toFixed(3)); el.style.setProperty('--pa', reduce?0:Math.abs(p).toFixed(3));
   }
 }
-let ticking=false; addEventListener('scroll', ()=>{ if(!ticking){ ticking=true; requestAnimationFrame(()=>{ onScroll(); ticking=false; }); } }, {passive:true});
+let ticking=false;
+function onScrollFrame(){ onScroll(); updateBoxes(); ticking=false; }
+function queueScroll(){ if(!ticking){ ticking=true; requestAnimationFrame(onScrollFrame); } }
+addEventListener('scroll', queueScroll, {passive:true});
 onScroll();
 
 /* =========================================================
    Contenedores: cada bloque sale de un contenedor
    ========================================================= */
+const CB_MOTIFS = {
+  stamp: '<div class="cb cb-motif"><b>✓</b><small>REGISTRADO</small></div>',
+  sheet: '<div class="cb cb-motif"><small>PACKING LIST</small></div>',
+  crane: '<div class="cb cb-motif"></div>',
+  wake:  '<div class="cb cb-motif"><i></i><i></i><i></i></div>',
+  flag:  '<div class="cb cb-motif">✓</div>'
+};
 function wrapContainer(el){
   if (el.closest('.cbox')) return el.closest('.cbox');
-  const c=el.dataset.cbox||'orange', code=el.dataset.code||'CHVU 977 000 0';
-  const box=document.createElement('div'); box.className='cbox'; box.dataset.c=c;
+  const c=el.dataset.cbox||'orange', code=el.dataset.code||'CHVU 977 000 0', motif=el.dataset.motif||'';
+  const box=document.createElement('div'); box.className='cbox'+(motif?' cbox--'+motif:''); box.dataset.c=c;
   const sc=document.createElement('div'); sc.className='cbox-scene';
-  sc.innerHTML=`<div class="cb cb-shadow"></div><div class="cb cb-back"></div><div class="cb cb-cargo"><span style="height:70%"></span><span style="height:100%"></span><span style="height:55%"></span><span style="height:85%"></span></div><div class="cb cb-l"></div><div class="cb cb-r"></div><div class="cb cb-t"></div><div class="cb cb-f"></div><div class="cb cbox-glow"></div>
+  sc.innerHTML=`<div class="cb cb-shadow"></div><div class="cb cb-back"></div><div class="cb cb-cargo"><span style="height:70%"></span><span style="height:100%"></span><span style="height:55%"></span><span style="height:85%"></span></div><div class="cb cb-l"></div><div class="cb cb-r"></div><div class="cb cb-t"></div><div class="cb cb-f"></div><div class="cb cbox-glow"></div>${CB_MOTIFS[motif]||''}
     <div class="cb cb-door cb-dl" aria-hidden="true"><small>${esc(code)}<br>45G1 · MAX 32,500 KG</small><b>${c==='navy'?'BROKER':'CHIVEN'}</b><span class="hdl"></span><small>TARE 3,780 KG<br>CU.CAP 76.4 M³</small></div>
     <div class="cb cb-door cb-dr" aria-hidden="true"><small>CHIVEN BROKER<br>NCE JM-977</small><b>${esc(code.split(' ').pop())}</b><span class="hdl"></span><small>CSC SAFETY APPROVAL<br>VE-977</small></div>
     <div class="cb cb-post cb-pl"></div><div class="cb cb-post cb-pr"></div><div class="cb cb-rail cb-rt">CHIVEN · BROKER</div><div class="cb cb-rail cb-rb"></div>`;
@@ -1824,7 +1925,6 @@ function updateBoxes(){
   for(const b of cboxes){ const r=b.getBoundingClientRect(); if(r.bottom<-300||r.top>vh+300) continue; const o=reduce?1:openAmount(b); b.style.setProperty('--o', o.toFixed(3)); if(o>.995){ if(!b._ot) b._ot=setTimeout(()=>b.classList.add('open'),600); } else { clearTimeout(b._ot); b._ot=0; b.classList.remove('open'); } let p=((r.top+r.height/2)-vh/2)/vh; b.firstElementChild.style.setProperty('--p', reduce?0:Math.max(-1,Math.min(1,p)).toFixed(3)); }
 }
 function animateOpen(box, ms=1300, delay=0){ if(reduce){ box.style.setProperty('--o',1); return; } box.style.setProperty('--o',0); const t0=performance.now()+delay; (function f(t){ const k=Math.max(0,Math.min(1,(t-t0)/ms)); box.style.setProperty('--o',(k*k*(3-2*k)).toFixed(3)); box.classList.toggle('open', k>=1); if(k<1) requestAnimationFrame(f); })(performance.now()); }
-addEventListener('scroll', ()=>requestAnimationFrame(updateBoxes), {passive:true});
 addEventListener('resize', updateBoxes); updateBoxes();
 
 /* ---- preloader + datos en vivo del hero ---- */
@@ -1839,7 +1939,7 @@ addEventListener('resize', updateBoxes); updateBoxes();
   const kT=document.getElementById('kTime'), kS=document.getElementById('kShip');
   const fmt=new Intl.DateTimeFormat('es-VE',{ hour:'2-digit', minute:'2-digit', second:'2-digit', timeZone:'Asia/Shanghai', hour12:false });
   setInterval(()=>{ try{ kT.textContent=fmt.format(new Date()); }catch(e){} const S=window.ChivenScene; if(S&&S.state){ const k=S.state.ship||0; kS.textContent = k<.02? 'MV Chiven · atracado' : k>.985 ? 'MV Chiven · en destino' : 'MV Chiven · navegando'; } },1000);
-  document.querySelectorAll('.hero-rail a').forEach(a=>a.addEventListener('click',e=>{ e.preventDefault(); const el=document.querySelector('[data-cam="'+a.dataset.step+'"]'); el && el.scrollIntoView({behavior:'smooth', block:'center'}); }));
+  document.querySelectorAll('.hero-rail a').forEach(a=>a.addEventListener('click',e=>{ e.preventDefault(); const el=document.querySelector('[data-cam="'+a.dataset.step+'"]'); if(!el) return; const r=el.getBoundingClientRect(); smoothScrollTo(scrollY + r.top + r.height/2 - innerHeight/2); }));
 })();
 
 /* =========================================================
@@ -1872,7 +1972,7 @@ $$('[data-tilt]').forEach(card=>{
 const burger=$('#burger'), navLinks=$('#navLinks');
 burger.addEventListener('click', ()=>{ const o=!navLinks.classList.contains('open'); navLinks.classList.toggle('open',o); burger.setAttribute('aria-expanded',String(o)); });
 navLinks.addEventListener('click', e=>{ if(e.target.closest('a')){ navLinks.classList.remove('open'); burger.setAttribute('aria-expanded','false'); } });
-$$('[data-goto]').forEach(b=>b.addEventListener('click', ()=>document.getElementById(b.dataset.goto)?.scrollIntoView({behavior:'smooth'})));
+$$('[data-goto]').forEach(b=>b.addEventListener('click', ()=>{ const el=document.getElementById(b.dataset.goto); if(el) smoothScrollTo(scrollY + el.getBoundingClientRect().top); }));
 
 /* WhatsApp + contact */
 function setupWA(){
